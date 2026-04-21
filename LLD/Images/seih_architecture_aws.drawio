@@ -1,0 +1,155 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="SEIH Architecture AWS" id="seih-aws-arch">
+    <mxGraphModel dx="2357" dy="1238" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="hospitals-bg" parent="1" style="rounded=1;arcSize=5;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=16;verticalAlign=top;spacingTop=8;" value="Hôpitaux Edge Sites" vertex="1">
+          <mxGeometry height="180" width="360" x="60" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="hopA" parent="1" style="rounded=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=14;fontStyle=1;" value="Hôpital A" vertex="1">
+          <mxGeometry height="50" width="150" x="80" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="hopB" parent="1" style="rounded=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=14;fontStyle=1;" value="Hôpital B" vertex="1">
+          <mxGeometry height="50" width="150" x="250" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="hopC" parent="1" style="rounded=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=14;fontStyle=1;" value="Hôpital C" vertex="1">
+          <mxGeometry height="50" width="150" x="80" y="185" as="geometry" />
+        </mxCell>
+        <mxCell id="hopN" parent="1" style="rounded=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=14;fontStyle=1;" value="Hôpital N…" vertex="1">
+          <mxGeometry height="50" width="150" x="250" y="185" as="geometry" />
+        </mxCell>
+        <mxCell id="tgw" parent="1" style="rounded=1;arcSize=8;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=3;fontSize=16;fontStyle=1;verticalAlign=middle;" value="AWS Transit Gateway&#xa;Hub de connectivité central" vertex="1">
+          <mxGeometry height="80" width="380" x="800" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="vpn-arrow" edge="1" parent="1" source="4fPzdOLb_TTgHXQG2_jn-2" style="edgeStyle=orthogonalEdgeStyle;dashed=1;strokeColor=#6c8ebf;strokeWidth=3;fontStyle=1;fontSize=15;fontColor=#6c8ebf;" target="tgw" value="AWS Site-to-Site VPN">
+          <mxGeometry relative="1" x="0.0033" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="990" y="230" />
+              <mxPoint x="990" y="230" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vpc-app" parent="1" style="rounded=1;arcSize=3;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=3;fontSize=16;fontStyle=1;verticalAlign=top;spacingTop=12;dashed=1;dashPattern=10 5;" value="VPC Applicatif — Services métier SEIH" vertex="1">
+          <mxGeometry height="910" width="560" x="60" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="sub-pub-app-lbl" parent="1" style="text;fontSize=15;fontStyle=1;fillColor=none;strokeColor=none;align=left;fontFamily=Helvetica;" value="Subnet public" vertex="1">
+          <mxGeometry height="24" width="180" x="90" y="488" as="geometry" />
+        </mxCell>
+        <mxCell id="sub-pub-app" parent="1" style="rounded=1;arcSize=5;fillColor=#f9ffe0;strokeColor=#82b366;dashed=1;strokeWidth=1.5;" value="" vertex="1">
+          <mxGeometry height="110" width="500" x="90" y="512" as="geometry" />
+        </mxCell>
+        <mxCell id="api-gw" parent="1" style="rounded=1;arcSize=8;fillColor=#00BEF2;strokeColor=#006EAF;fontColor=#ffffff;fontSize=15;fontStyle=1;verticalAlign=middle;" value="API Gateway&#xa;Point d&#39;entrée sécurisé — HTTPS / TLS" vertex="1">
+          <mxGeometry height="70" width="450" x="115" y="540" as="geometry" />
+        </mxCell>
+        <mxCell id="sub-priv-app-lbl" parent="1" style="text;fontSize=15;fontStyle=1;fillColor=none;strokeColor=none;align=left;fontFamily=Helvetica;" value="Subnet privé — services applicatifs" vertex="1">
+          <mxGeometry height="24" width="300" x="80" y="624" as="geometry" />
+        </mxCell>
+        <mxCell id="sub-priv-app" parent="1" style="rounded=1;arcSize=5;fillColor=#f0fff4;strokeColor=#82b366;dashed=1;strokeWidth=1.5;" value="" vertex="1">
+          <mxGeometry height="630" width="500" x="90" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="iam" parent="1" style="rounded=1;arcSize=8;fillColor=#1D9E75;strokeColor=#085041;fontColor=#ffffff;fontSize=15;fontStyle=1;verticalAlign=middle;" value="IAM / Auth Service&#xa;Authentification · Gestion des accès · JWT / OAuth2" vertex="1">
+          <mxGeometry height="80" width="450" x="115" y="720" as="geometry" />
+        </mxCell>
+        <mxCell id="workflow" parent="1" style="rounded=1;arcSize=8;fillColor=#3B6D11;strokeColor=#173404;fontColor=#ffffff;fontSize=15;fontStyle=1;verticalAlign=middle;" value="Workflow Service&#xa;Orchestration des échanges inter-hospitaliers" vertex="1">
+          <mxGeometry height="80" width="450" x="115" y="850" as="geometry" />
+        </mxCell>
+        <mxCell id="interop" parent="1" style="rounded=1;arcSize=8;fillColor=#1D9E75;strokeColor=#085041;fontColor=#ffffff;fontSize=15;fontStyle=1;verticalAlign=middle;" value="Interoperability Engine&#xa;Conversion HL7 v2 / FHIR R4" vertex="1">
+          <mxGeometry height="80" width="450" x="115" y="990" as="geometry" />
+        </mxCell>
+        <mxCell id="monitoring" parent="1" style="rounded=1;arcSize=8;fillColor=#5F5E5A;strokeColor=#2C2C2A;fontColor=#ffffff;fontSize=15;fontStyle=1;verticalAlign=middle;" value="Monitoring &amp; Observabilité&#xa;Métriques · Logs · Alertes · Traces" vertex="1">
+          <mxGeometry height="80" width="450" x="115" y="1140" as="geometry" />
+        </mxCell>
+        <mxCell id="arr1" edge="1" parent="1" source="api-gw" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#82b366;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="iam" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr2" edge="1" parent="1" source="iam" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#82b366;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="workflow" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr3" edge="1" parent="1" source="workflow" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#82b366;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="interop" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr4" edge="1" parent="1" source="interop" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#82b366;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="monitoring" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vpc-sec" parent="1" style="rounded=1;arcSize=3;fillColor=#e8def8;strokeColor=#7B68EE;strokeWidth=3;fontSize=16;fontStyle=1;verticalAlign=top;spacingTop=12;dashed=1;dashPattern=10 5;" value="VPC Sécurité &amp; Intégration — Services transverses partagés" vertex="1">
+          <mxGeometry height="910" width="560" x="1370" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="sub-pub-sec-lbl" parent="1" style="text;fontSize=15;fontStyle=1;fillColor=none;strokeColor=none;align=left;" value="Subnet public" vertex="1">
+          <mxGeometry height="24" width="180" x="1410" y="512" as="geometry" />
+        </mxCell>
+        <mxCell id="sub-pub-sec" parent="1" style="rounded=1;arcSize=5;fillColor=#f5f0ff;strokeColor=#7B68EE;dashed=1;strokeWidth=1.5;" value="" vertex="1">
+          <mxGeometry height="98" width="500" x="1410" y="550" as="geometry" />
+        </mxCell>
+        <mxCell id="nat-waf" parent="1" style="rounded=1;arcSize=8;fillColor=#D85A30;strokeColor=#4A1B0C;fontColor=#ffffff;fontSize=15;fontStyle=1;verticalAlign=middle;" value="NAT Gateway · WAF · Pare-feu&#xa;Filtrage entrant · Protection périmétrique" vertex="1">
+          <mxGeometry height="70" width="450" x="1425" y="570" as="geometry" />
+        </mxCell>
+        <mxCell id="sub-priv-sec-lbl" parent="1" style="text;fontSize=15;fontStyle=1;fillColor=none;strokeColor=none;align=left;" value="Subnet privé — sécurité &amp; réseau" vertex="1">
+          <mxGeometry height="24" width="300" x="1400" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="sub-priv-sec" parent="1" style="rounded=1;arcSize=5;fillColor=#f0edff;strokeColor=#7B68EE;dashed=1;strokeWidth=1.5;" value="" vertex="1">
+          <mxGeometry height="620" width="490" x="1400" y="690" as="geometry" />
+        </mxCell>
+        <mxCell id="routing" parent="1" style="rounded=1;arcSize=8;fillColor=#534AB7;strokeColor=#26215C;fontColor=#ffffff;fontSize=15;fontStyle=1;verticalAlign=middle;" value="Routage Privé&#xa;Route Tables · Private DNS · VPC Endpoints" vertex="1">
+          <mxGeometry height="80" width="450" x="1425" y="730" as="geometry" />
+        </mxCell>
+        <mxCell id="netctrl" parent="1" style="rounded=1;arcSize=8;fillColor=#534AB7;strokeColor=#26215C;fontColor=#ffffff;fontSize=15;fontStyle=1;verticalAlign=middle;" value="Contrôles Réseau&#xa;Security Groups · NACLs · VPC Flow Logs" vertex="1">
+          <mxGeometry height="80" width="450" x="1425" y="860" as="geometry" />
+        </mxCell>
+        <mxCell id="admin" parent="1" style="rounded=1;arcSize=8;fillColor=#5F5E5A;strokeColor=#2C2C2A;fontColor=#ffffff;fontSize=15;fontStyle=1;verticalAlign=middle;" value="Accès Administration&#xa;Bastion Host · AWS SSM · Audit Trail" vertex="1">
+          <mxGeometry height="80" width="450" x="1425" y="1000" as="geometry" />
+        </mxCell>
+        <mxCell id="secsvc" parent="1" style="rounded=1;arcSize=8;fillColor=#D85A30;strokeColor=#4A1B0C;fontColor=#ffffff;fontSize=15;fontStyle=1;verticalAlign=middle;" value="Services Sécurité Transverses&#xa;AWS KMS · Secrets Manager · CloudTrail" vertex="1">
+          <mxGeometry height="80" width="450" x="1425" y="1150" as="geometry" />
+        </mxCell>
+        <mxCell id="arr5" edge="1" parent="1" source="nat-waf" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#7B68EE;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="routing" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr6" edge="1" parent="1" source="routing" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#7B68EE;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="netctrl" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr7" edge="1" parent="1" source="netctrl" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#7B68EE;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="admin" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr8" edge="1" parent="1" source="admin" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#7B68EE;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="secsvc" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tgw-app" edge="1" parent="1" source="tgw" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#d6b656;strokeWidth=3;dashed=1;dashPattern=8 4;fontSize=15;fontStyle=1;fontColor=#854F0B;" target="vpc-app" value="Peering TGW">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="990" y="420" />
+              <mxPoint x="340" y="420" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tgw-sec" edge="1" parent="1" source="tgw" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#d6b656;strokeWidth=3;dashed=1;dashPattern=8 4;fontSize=15;fontStyle=1;fontColor=#854F0B;" target="vpc-sec" value="Peering TGW">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="990" y="420" />
+              <mxPoint x="1650" y="420" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vpc-vpc" edge="1" parent="1" source="vpc-app" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#d6b656;strokeWidth=2.5;dashed=1;dashPattern=6 4;fontSize=13;fontStyle=1;fontColor=#854F0B;startArrow=block;startFill=0;endArrow=block;endFill=0;" target="vpc-sec" value="Communication inter-VPC via TGW">
+          <mxGeometry relative="1" x="-0.0714" y="25" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="620" y="840" />
+              <mxPoint x="900" y="840" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4fPzdOLb_TTgHXQG2_jn-3" edge="1" parent="1" source="hospitals-bg" style="edgeStyle=orthogonalEdgeStyle;dashed=1;strokeColor=#6c8ebf;strokeWidth=3;fontStyle=1;fontSize=13;fontColor=#6c8ebf;" target="4fPzdOLb_TTgHXQG2_jn-2" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="420" y="150" as="sourcePoint" />
+            <mxPoint x="990" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4fPzdOLb_TTgHXQG2_jn-2" parent="1" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/internet_cloud.svg;" value="" vertex="1">
+          <mxGeometry height="135.8" width="215.56" x="900" y="82.1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
